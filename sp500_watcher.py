@@ -67,18 +67,6 @@ def main():
         if this_friday_close is not None:
             save_last_friday_data(this_friday_close)
 
-# プログラムがPC起動時に自動的に立ち上がるようにするためのWindowsスタートアップ登録
-def add_to_startup():
-    # スクリプトのパスを取得
-    script_path = os.path.realpath(__file__)
-    
-    # スタートアップフォルダにショートカットを作成
-    startup_folder = os.path.join(os.getenv('APPDATA'), 'Microsoft\\Windows\\Start Menu\\Programs\\Startup')
-    shortcut_path = os.path.join(startup_folder, 'sp500_watcher.bat')
-
-    with open(shortcut_path, 'w') as shortcut:
-        shortcut.write(f'python "{script_path}"')
 
 if __name__ == "__main__":
-    add_to_startup()  # スタートアップに登録
     main()  # メインプログラムを実行
